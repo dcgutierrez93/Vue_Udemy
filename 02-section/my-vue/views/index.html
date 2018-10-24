@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Setup Vue Locally</title>
+    <script src="../vue.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1 v-once>{{ title }}</h1>
+        <!-- Binding attributes with v-bind -->
+        <p>{{ sayHello() }} - <a v-bind:href="link" target="_blank">Google</a> </p>
+        <!-- output raw html - Use Carefuly!!  -->
+        <p v-html="finishedLink"></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: "Hello World!",
+                link: "http://google.com",
+                // output raw html
+                finishedLink: '<a href="http://google.com" target="_blank">Google</a>'
+            },
+            methods: {
+                sayHello: function() {
+                    this.title = "Hello!";
+                    return this.title;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
