@@ -1,6 +1,11 @@
 <!-- Create a new component -->
 <template>
-    <p>Server Status: {{ status }}</p>
+    <div>
+        <p>Server Status: {{ status }}</p>
+        <hr>
+        <button @click="changeStatus">Change Status</button>
+    </div>
+
 </template>
 
 <script>
@@ -12,7 +17,7 @@
         },
         methods: {
             changeStatus() {
-
+                this.status = 'Normal'
             }
         }
     }
