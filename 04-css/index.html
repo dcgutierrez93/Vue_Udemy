@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Dynamic Styling</title>
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="master.css">
+    </head>
+    <body>
+
+
+        <!-- Application -->
+        <div id="app">
+            <!-- Attaching css class using :class="{key: value}" -->
+            <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+            <div class="demo"></div>
+            <!-- Attach Multiple Classes using array syntax -->
+            <div class="demo" :class="[color, {attachRed: !=attachRed}]"></div>
+            <hr>
+            <input type="text" v-model="color" placeholder="type blue or green or red">
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    attachRed: false,
+                    color: ''
+                },
+                computed: {
+                    divClasses: function() {
+                        return {
+                            red: this.attachRed,
+                            blue: !this.attachRed
+                        };
+                    }
+                }
+            })
+        </script>
+
+    </body>
+</html>
